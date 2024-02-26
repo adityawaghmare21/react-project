@@ -1,17 +1,18 @@
+// src/index.js
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
+import ReactDOM from 'react-dom';
+import { Global } from '@emotion/react';
+import { ThemeProvider } from '@emotion/react';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { GlobalStyles } from './styles/globalStyles';
+import theme from './styles/theme';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
+ReactDOM.render(
   <React.StrictMode>
-    <App />
-  </React.StrictMode>
+    <ThemeProvider theme={theme}>
+      <Global styles={GlobalStyles} />
+      <App />
+    </ThemeProvider>
+  </React.StrictMode>,
+  document.getElementById('root')
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
